@@ -15,9 +15,17 @@ class BookService {
     return prisma.book.findUnique({ where: bookId, include: { author: true } });
   }
 
-  public async createBook(bookData: Omit<CreateBookDto, 'author'>, author: CreateAuthorDto): Promise<Book> {
+  public async createBookUsingAuthorDetails(bookData: Omit<CreateBookDto, 'author'>, author: CreateAuthorDto): Promise<Book> {
     try {
       return await prisma.book.create({ data: { ...bookData, author: { connect: { firstname_lastname: author } } } });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  public async createBookUsingAuthorId(bookData: Omit<CreateBookDto, 'author'>, author: number): Promise<Book> {
+    try {
+      return await prisma.book.create({ data: { ...bookData, authorId: author } });
     } catch (e) {
       console.error(e);
     }

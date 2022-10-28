@@ -22,7 +22,9 @@ model Author {
 model Book {
   id        Int      @default(autoincrement()) @id
   title     String
-  isbn      String
+  isbn      String     @unique
   author    Author?    @relation(fields: [authorId], references: [id])
   authorId  Int?
+
+  @@unique([isbn,authorId])
 }

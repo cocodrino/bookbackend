@@ -21,7 +21,7 @@ export class BookController {
   async getBookById(@Param('id') bookId: number) {
     const book = await this.book.findBookById({ id: bookId });
 
-    if (!book) throw new HttpException(400, 'data not found for the symbol');
+    if (!book) throw new HttpException(400, 'data not found for the bookID');
 
     return { book };
   }
@@ -33,9 +33,11 @@ export class BookController {
   async createBook(@Body() bookData: CreateBookDto) {
     const { author, ...onlyBookData } = bookData;
 
-    const book = await this.book.createBook(onlyBookData, author);
+    let book;
+    if (typeof author === 'number') book = await this.book.createBookUsingAuthorId(onlyBookData, author);
+    else book = await this.book.createBookUsingAuthorDetails(onlyBookData, author);
 
-    if (!book) throw new HttpException(404, 'Error. Please check that book id is set correctly and book exists');
+    if (!book) throw new HttpException(400, 'Error. Please check that book id is set correctly and book exists');
 
     return { book };
   }

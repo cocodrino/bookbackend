@@ -1,0 +1,59 @@
+###
+# Find All Books
+GET http://localhost:3000/books
+
+###
+# Find User By Id
+GET http://localhost:3000/book/2
+
+###
+# Create Book using ID
+POST http://localhost:3000/book
+Content-Type: application/json
+
+{
+  "title": "Fuego y Sangre 2",
+  "isbn": "1072345",
+  "author" : 1
+}
+
+###
+# Create Book using author details
+POST http://localhost:3000/book
+Content-Type: application/json
+
+{
+  "title": "Vientos de Invierno",
+  "isbn": "1072345",
+  "author" : {
+    "firstname": "George R",
+    "lastname": "R Martin"
+  }
+}
+
+
+###
+# Modify User By Id
+PUT http://localhost:3000/book/1
+Content-Type: application/json
+
+{
+  "isbn": "23439584"
+}
+
+
+
+###
+# This probably must fail
+PUT http://localhost:3000/book/1993824454564
+Content-Type: application/json
+
+{
+  "isbn": "492385453645"
+}
+
+
+
+###
+# Delete User By Id
+DELETE http://localhost:3000/book/1
