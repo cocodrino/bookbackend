@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Author {
-  id    Int     @default(autoincrement()) @id
+ @@id([firstName, lastName])
   firstname  String
   lastname String
   books Book[]

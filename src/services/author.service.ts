@@ -10,7 +10,7 @@ class AuthorService {
   }
 
   public async findAuthorById(authorId: Prisma.AuthorWhereUniqueInput): Promise<Author> {
-    return prisma.author.findUnique({ where: authorId });
+    return prisma.author.findUnique({ where: authorId, include: { books: true } });
   }
 
   public async createAuthor(authorData: Prisma.AuthorCreateInput): Promise<Author> {
