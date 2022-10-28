@@ -34,3 +34,5 @@ archivos .env
 #### DB Development
 La base de datos local para pruebas está ubicada en **prisma/dev.db**
 
+https://gitlab.com/clagccs/bookbackend
+
