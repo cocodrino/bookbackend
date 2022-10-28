@@ -3,6 +3,8 @@
 import { default as prisma } from '@/instances/prisma';
 import { Prisma, Book } from '@prisma/client';
 import * as console from 'console';
+import { CreateAuthorDto } from '@dtos/authors.dto';
+import { CreateBookDto } from '@dtos/books.dto';
 
 class BookService {
   public async findAllBooks(): Promise<Book[]> {
@@ -13,8 +15,12 @@ class BookService {
     return prisma.book.findUnique({ where: bookId, include: { author: true } });
   }
 
-  public async createBook(bookData: Prisma.BookCreateInput): Promise<Book> {
-    return prisma.book.create({ data: bookData });
+  public async createBook(bookData: Omit<CreateBookDto, 'author'>, author: CreateAuthorDto): Promise<Book> {
+    try {
+      return await prisma.book.create({ data: { ...bookData, author: { connect: { firstname_lastname: author } } } });
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   public async updateBook(params: { where: Prisma.BookWhereUniqueInput; data: Prisma.BookUpdateInput }): Promise<Book> {

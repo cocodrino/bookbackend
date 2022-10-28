@@ -11,10 +11,12 @@ datasource db {
 }
 
 model Author {
- @@id([firstName, lastName])
+  id        Int      @default(autoincrement()) @id
   firstname  String
   lastname String
   books Book[]
+
+  @@unique([firstname, lastname])
 }
 
 model Book {

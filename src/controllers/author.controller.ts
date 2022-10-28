@@ -29,11 +29,11 @@ export class AuthorController {
   @Post('/author')
   @HttpCode(201)
   @UseBefore(validationMiddleware(CreateAuthorDto, 'body'))
-  @OpenAPI({ summary: 'Create a new authorr' })
+  @OpenAPI({ summary: 'Create a new author' })
   async createAuthor(@Body() authorData: CreateAuthorDto) {
     const author = await this.author.createAuthor({ ...authorData });
 
-    if (!author) throw new HttpException(404, 'Error. Please check that author id is set correctly and author exists');
+    if (!author) throw new HttpException(400, 'Error. Please check that author data is not repeated');
 
     return { author };
   }

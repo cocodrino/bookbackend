@@ -29,9 +29,11 @@ export class BookController {
   @Post('/book')
   @HttpCode(201)
   @UseBefore(validationMiddleware(CreateBookDto, 'body'))
-  @OpenAPI({ summary: 'Create a new bookr' })
+  @OpenAPI({ summary: 'Create a new book' })
   async createBook(@Body() bookData: CreateBookDto) {
-    const book = await this.book.createBook({ ...bookData });
+    const { author, ...onlyBookData } = bookData;
+
+    const book = await this.book.createBook(onlyBookData, author);
 
     if (!book) throw new HttpException(404, 'Error. Please check that book id is set correctly and book exists');
 
@@ -41,8 +43,8 @@ export class BookController {
   @Put('/book/:id')
   @UseBefore(validationMiddleware(CreateBookDto, 'body', true))
   @OpenAPI({ summary: 'Update an book' })
-  async updateBook(@Param('id') userId: number, @Body() userData: Partial<CreateBookDto>) {
-    const book = await this.book.updateBook({ where: { id: userId }, data: { ...userData } });
+  async updateBook(@Param('id') bookId: number, @Body() userData: Omit<Partial<CreateBookDto>, 'author'>) {
+    const book = await this.book.updateBook({ where: { id: bookId }, data: { ...userData } });
 
     if (!book) throw new HttpException(404, 'Error. Please check that book id is set correctly and book exists');
 

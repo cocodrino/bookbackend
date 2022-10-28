@@ -1,4 +1,5 @@
 import { MinLength, IsString } from 'class-validator';
+import { CreateAuthorDto } from '@dtos/authors.dto';
 
 export class CreateBookDto {
   @IsString()
@@ -9,5 +10,5 @@ export class CreateBookDto {
   @MinLength(5)
   public isbn: string;
 
-
+  author: CreateAuthorDto;
 }

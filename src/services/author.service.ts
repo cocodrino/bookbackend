@@ -14,7 +14,11 @@ class AuthorService {
   }
 
   public async createAuthor(authorData: Prisma.AuthorCreateInput): Promise<Author> {
-    return prisma.author.create({ data: authorData });
+    try {
+      return await prisma.author.create({ data: authorData });
+    } catch (e) {
+      console.error(`error trying to create author ${e}`);
+    }
   }
 
   public async updateAuthor(params: { where: Prisma.AuthorWhereUniqueInput; data: Prisma.AuthorUpdateInput }): Promise<Author> {

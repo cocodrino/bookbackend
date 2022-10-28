@@ -3,6 +3,7 @@ import { AuthorController } from '../controllers/author.controller';
 import App from '@/app';
 import request from 'supertest';
 import AuthorService from '../services/author.service';
+import prisma from '../instances/prisma';
 
 describe('Authors Controller', () => {
   afterAll(async () => {
@@ -102,6 +103,20 @@ describe('Authors Controller', () => {
 
       const app = new App([AuthorController]);
       const req = request(app.getServer()).post('/author').send(author);
+
+      return req.expect(400);
+    });
+
+    it('must fail if lastname and firstname is repeated', async () => {
+      const authorData = {
+        firstname: 'Miguel',
+        lastname: 'Cervantes',
+      };
+
+      await author.createAuthor(authorData);
+
+      const app = new App([AuthorController]);
+      const req = request(app.getServer()).post('/author').send(authorData);
 
       return req.expect(400);
     });
