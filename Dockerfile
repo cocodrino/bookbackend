@@ -1,11 +1,11 @@
 # Common build stage
-FROM node:16-alpine3.15 as common-build-stage
+FROM node:18-alpine as common-build-stage
 
 COPY . ./app
 
 WORKDIR /app
 
-RUN npm install
+RUN npm install --force
 
 EXPOSE 3000
 
