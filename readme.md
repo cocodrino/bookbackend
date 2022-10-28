@@ -34,5 +34,14 @@ archivos .env
 #### DB Development
 La base de datos local para pruebas está ubicada en **prisma/dev.db**
 
+#### DEPLOYMENT
+El archivo dockerfile fue ajustado y se puede desplegar directamente a proveedores que permiten correr containers, actualmente
+está ejecutandose en [render](https://render.com)
+
 https://gitlab.com/clagccs/bookbackend
 
+backend url https://bookbackend.onrender.com/
+
+#### SWAGGER
+Documentación de endpoints puede ser visualizada en /api-docs/
+en servicio desplegado revisar [acá](https://bookbackend.onrender.com/api-docs/)
