@@ -5,11 +5,11 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
+    "start": "pnpm run build && cross-env NODE_ENV=production node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "build": "swc src -d dist --source-maps --copy-files",
     "build:tsc": "tsc && tsc-alias",
-    "test": "jest --forceExit --detectOpenHandles",
+    "test": "npx prisma migrate dev && jest --forceExit --detectOpenHandles",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
     "lint:fix": "npm run lint -- --fix",
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
@@ -35,6 +35,7 @@
     "routing-controllers": "^0.9.0",
     "routing-controllers-openapi": "^3.1.0",
     "swagger-ui-express": "^4.5.0",
+    "tslib": "^2.4.0",
     "winston": "^3.8.1",
     "winston-daily-rotate-file": "^4.7.1"
   },

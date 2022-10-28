@@ -1,0 +1,51 @@
+###
+# Find All Users
+GET http://localhost:3000/authors
+
+###
+# Find User By Id
+GET http://localhost:3000/author/1
+
+###
+# Create User
+POST http://localhost:3000/author
+Content-Type: application/json
+
+{
+  "firstname": "George R",
+  "lastname": "Richard Martin"
+}
+
+###
+# Modify User By Id
+PUT http://localhost:3000/author/1
+Content-Type: application/json
+
+{
+  "firstname": "George R",
+  "lastname": "R Martin"
+}
+
+###
+# This must also works
+PUT http://localhost:3000/author/1
+Content-Type: application/json
+
+{
+  "firstname": "George"
+}
+
+###
+# This probably must fail
+PUT http://localhost:3000/author/1993824454564
+Content-Type: application/json
+
+{
+  "firstname": "George"
+}
+
+
+
+###
+# Delete User By Id
+DELETE http://localhost:3000/author/1

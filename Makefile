@@ -26,4 +26,8 @@ clean:
 run:
 	docker run -d -it -p 3000:3000 ${APP_NAME}
 
+# Clean db after every use in test
+cleardb:
+	npx prisma migrate reset -f
+
 all: build

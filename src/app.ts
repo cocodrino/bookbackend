@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+// @ts-ignore
 import { defaultMetadataStorage } from 'class-transformer';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 import compression from 'compression';

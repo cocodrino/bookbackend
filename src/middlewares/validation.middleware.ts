@@ -4,11 +4,11 @@ import { RequestHandler } from 'express';
 import { HttpException } from '@exceptions/HttpException';
 
 const getAllNestedErrors = (error: ValidationError) => {
-  if(error.constraints){
-    return Object.values(error.constraints)
+  if (error.constraints) {
+    return Object.values(error.constraints);
   }
-  return error.children.map(getAllNestedErrors).join(',')
-}
+  return error.children.map(getAllNestedErrors).join(',');
+};
 
 export const validationMiddleware = (
   type: any,

@@ -10,7 +10,7 @@ afterAll(async () => {
 });
 
 describe('Testing Users', () => {
-  describe('[GET] /users', () => {
+  describe('[GET] /users', () => {/;;
     it('response statusCode 200 / findAll', () => {
       const findUser: User[] = userModel;
 
