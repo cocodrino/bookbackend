@@ -23,11 +23,11 @@ POST http://localhost:3000/book
 Content-Type: application/json
 
 {
-  "title": "Vientos de Invierno",
-  "isbn": "1072345",
+  "title": "1984",
+  "isbn": "1072345234",
   "author" : {
-    "firstname": "George R",
-    "lastname": "R Martin"
+    "firstname": "George",
+    "lastname": "Orwell"
   }
 }
 

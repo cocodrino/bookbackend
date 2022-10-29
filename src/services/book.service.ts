@@ -17,7 +17,12 @@ class BookService {
 
   public async createBookUsingAuthorDetails(bookData: Omit<CreateBookDto, 'author'>, author: CreateAuthorDto): Promise<Book> {
     try {
-      return await prisma.book.create({ data: { ...bookData, author: { connect: { firstname_lastname: author } } } });
+      return await prisma.book.create({
+        data: {
+          ...bookData,
+          author: { connectOrCreate: { where: { firstname_lastname: author }, create: author } },
+        },
+      });
     } catch (e) {
       console.error(e);
     }
