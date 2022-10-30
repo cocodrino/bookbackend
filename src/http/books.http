@@ -23,22 +23,22 @@ POST http://localhost:3000/book
 Content-Type: application/json
 
 {
-  "title": "1984",
-  "isbn": "1072345234",
+  "title": "Spy School the Graphic Novel 3",
+  "isbn": "1534455426azxv",
   "author" : {
-    "firstname": "George",
-    "lastname": "Orwell"
+    "firstname": "Stuart",
+    "lastname": "Gibbs"
   }
 }
 
 
 ###
 # Modify User By Id
-PUT http://localhost:3000/book/1
+PUT http://localhost:3000/book/17
 Content-Type: application/json
 
 {
-  "isbn": "23439584"
+  "isbn": "23439584fgas"
 }
 
 
@@ -56,4 +56,4 @@ Content-Type: application/json
 
 ###
 # Delete User By Id
-DELETE http://localhost:3000/book/1
+DELETE http://localhost:3000/book/17

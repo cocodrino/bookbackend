@@ -12,8 +12,8 @@ POST http://localhost:3000/author
 Content-Type: application/json
 
 {
-  "firstname": "George R",
-  "lastname": "Richard Martin"
+  "firstname": "Tom",
+  "lastname": "Clancy"
 }
 
 ###
@@ -22,8 +22,8 @@ PUT http://localhost:3000/author/1
 Content-Type: application/json
 
 {
-  "firstname": "George R",
-  "lastname": "R Martin"
+  "firstname": "George R.",
+  "lastname": "R. Martin"
 }
 
 ###

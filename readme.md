@@ -45,3 +45,7 @@ backend url https://bookbackend.onrender.com/
 #### SWAGGER
 Documentación de endpoints puede ser visualizada en /api-docs/
 en servicio desplegado revisar [acá](https://bookbackend.onrender.com/api-docs/)
+
+#### Posibles mejoras
+Utilizar ISBN como id tanto para la DB como para la API
+
